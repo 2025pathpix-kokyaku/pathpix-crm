@@ -1,0 +1,47 @@
+
+
+{% extends 'base.html' %}
+{% block title %}顧客管理 - Pathpix CRM{% endblock %}
+{% block content %}
+
+<h1 class="text-2xl font-bold mb-6">顧客管理</h1>
+
+<div class="mb-4">
+  <a href="{{ url_for('customer_new') }}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">＋ 新規登録</a>
+</div>
+
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white border border-gray-300 text-sm">
+    <thead>
+      <tr class="bg-gray-100 text-gray-700">
+        <th class="py-2 px-4 border">ID</th>
+        <th class="py-2 px-4 border">会社名／学校名</th>
+        <th class="py-2 px-4 border">担当者名</th>
+        <th class="py-2 px-4 border">電話番号</th>
+        <th class="py-2 px-4 border">メール</th>
+        <th class="py-2 px-4 border">顧客タイプ</th>
+        <th class="py-2 px-4 border">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in customers %}
+      <tr class="hover:bg-gray-50">
+        <td class="py-2 px-4 border text-center">{{ customer.id }}</td>
+        <td class="py-2 px-4 border">{{ customer.name }}</td>
+        <td class="py-2 px-4 border">{{ customer.contact_person }}</td>
+        <td class="py-2 px-4 border">{{ customer.phone }}</td>
+        <td class="py-2 px-4 border">{{ customer.email }}</td>
+        <td class="py-2 px-4 border">{{ customer.customer_type }}</td>
+        <td class="py-2 px-4 border text-center space-x-2">
+          <a href="{{ url_for('customer_detail', customer_id=customer.id) }}" class="text-blue-600 hover:underline">詳細</a>
+          <a href="{{ url_for('customer_edit', customer_id=customer.id) }}" class="text-yellow-600 hover:underline">編集</a>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7" class="text-center text-gray-500 py-4">顧客データがありません。</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

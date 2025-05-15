@@ -1,0 +1,48 @@
+
+
+{% extends 'base.html' %}
+{% block title %}顧客詳細 - Pathpix CRM{% endblock %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">顧客詳細</h2>
+
+<div class="bg-white p-6 rounded shadow max-w-3xl space-y-4">
+  <div class="flex justify-between">
+    <span class="font-semibold">顧客ID:</span>
+    <span>{{ customer.id }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-semibold">会社名／学校名:</span>
+    <span>{{ customer.name }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-semibold">担当者名:</span>
+    <span>{{ customer.contact_person }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-semibold">電話番号:</span>
+    <span>{{ customer.phone }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-semibold">メールアドレス:</span>
+    <span>{{ customer.email }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-semibold">住所:</span>
+    <span>{{ customer.address }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-semibold">顧客タイプ:</span>
+    <span>{{ customer.customer_type }}</span>
+  </div>
+  <div>
+    <span class="font-semibold block mb-1">備考:</span>
+    <div class="bg-gray-50 p-3 rounded text-sm text-gray-700">{{ customer.notes }}</div>
+  </div>
+</div>
+
+<div class="mt-6 text-center">
+  <a href="{{ url_for('customers') }}" class="text-blue-600 hover:underline">← 顧客一覧に戻る</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Pathpix CRM{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-green-600 text-white p-4 text-xl font-bold">
+    Pathpix CRM
+  </header>
+
+  <nav class="bg-green-100 text-green-900 p-3 text-sm">
+    <ul class="flex flex-wrap gap-4">
+      <li><a href="{{ url_for('dashboard') }}" class="hover:underline">ダッシュボード</a></li>
+      <li><a href="{{ url_for('customers') }}" class="hover:underline">顧客管理</a></li>
+      <li><a href="{{ url_for('customer_new') }}" class="hover:underline">顧客登録</a></li>
+      <li><a href="{{ url_for('contract_new') }}" class="hover:underline">契約登録</a></li>
+      <li><a href="{{ url_for('contacts') }}" class="hover:underline">コンタクト履歴</a></li>
+      <li><a href="{{ url_for('invoices') }}" class="hover:underline">請求管理</a></li>
+      <li><a href="{{ url_for('sales') }}" class="hover:underline">売上管理</a></li>
+    </ul>
+  </nav>
+
+  <main class="p-6 max-w-6xl mx-auto">
+    {% block content %}{% endblock %}
+  </main>
+
+</body>
+</html>

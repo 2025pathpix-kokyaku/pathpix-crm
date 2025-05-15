@@ -1,0 +1,46 @@
+
+
+{% extends 'base.html' %}
+{% block title %}売上管理 - Pathpix CRM{% endblock %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">売上管理</h2>
+
+<!-- 月次検索フォーム -->
+<form method="GET" action="{{ url_for('sales') }}" class="mb-6 flex items-center gap-4">
+  <label class="font-semibold">月で検索：</label>
+  <input type="month" name="month" value="{{ selected_month }}" class="border px-2 py-1 rounded" required>
+  <button type="submit" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">検索</button>
+</form>
+
+<!-- 売上一覧テーブル -->
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white border border-gray-300 text-sm">
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="border px-4 py-2">売上ID</th>
+        <th class="border px-4 py-2">顧客名</th>
+        <th class="border px-4 py-2">契約名</th>
+        <th class="border px-4 py-2">売上日</th>
+        <th class="border px-4 py-2">金額</th>
+        <th class="border px-4 py-2">入金状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sale in sales %}
+      <tr class="hover:bg-gray-50">
+        <td class="border px-4 py-2 text-center">{{ sale.id }}</td>
+        <td class="border px-4 py-2">{{ sale.customer_name }}</td>
+        <td class="border px-4 py-2">{{ sale.contract_name }}</td>
+        <td class="border px-4 py-2">{{ sale.sale_date }}</td>
+        <td class="border px-4 py-2 text-right">¥{{ "{:,}".format(sale.amount) }}</td>
+        <td class="border px-4 py-2 text-center">{{ sale.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6" class="text-center text-gray-500 py-4">該当する売上データがありません。</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

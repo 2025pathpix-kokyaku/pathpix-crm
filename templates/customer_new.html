@@ -1,0 +1,56 @@
+
+
+{% extends 'base.html' %}
+{% block title %}顧客登録 - Pathpix CRM{% endblock %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">顧客登録</h2>
+
+<form method="POST" action="{{ url_for('customer_new') }}" class="bg-white p-6 rounded shadow-md space-y-4 max-w-2xl">
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">会社名・学校名など</label>
+    <input type="text" name="name" required class="w-full border px-3 py-2 rounded" placeholder="例：株式会社〇〇／〇〇高等学校">
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">担当者名</label>
+    <input type="text" name="contact_person" class="w-full border px-3 py-2 rounded" placeholder="例：山田太郎">
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">電話番号</label>
+    <input type="text" name="phone" class="w-full border px-3 py-2 rounded" placeholder="例：06-1234-5678">
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">メールアドレス</label>
+    <input type="email" name="email" class="w-full border px-3 py-2 rounded" placeholder="例：info@example.com">
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">住所</label>
+    <input type="text" name="address" class="w-full border px-3 py-2 rounded" placeholder="例：大阪府泉佐野市...">
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">顧客タイプ</label>
+    <select name="customer_type" class="w-full border px-3 py-2 rounded">
+      <option value="企業">企業</option>
+      <option value="学校">学校</option>
+      <option value="自治体">自治体</option>
+      <option value="個人">個人</option>
+    </select>
+  </div>
+
+  <div>
+    <label class="block text-gray-700 font-semibold mb-1">備考</label>
+    <textarea name="notes" class="w-full border px-3 py-2 rounded" rows="3" placeholder="その他の情報を入力してください..."></textarea>
+  </div>
+
+  <div class="text-right">
+    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">登録する</button>
+  </div>
+</form>
+
+{% endblock %}

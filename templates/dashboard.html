@@ -1,0 +1,41 @@
+
+
+{% extends 'base.html' %}
+{% block title %}ダッシュボード - Pathpix CRM{% endblock %}
+{% block content %}
+
+<h1 class="text-2xl font-bold mb-6">Pathpix CRM ダッシュボード</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <a href="{{ url_for('customers') }}" class="block bg-white p-6 rounded shadow hover:bg-green-50">
+    <h2 class="text-xl font-semibold text-green-700">顧客管理</h2>
+    <p class="text-sm text-gray-600">顧客一覧の確認・検索・登録</p>
+  </a>
+
+  <a href="{{ url_for('customer_new') }}" class="block bg-white p-6 rounded shadow hover:bg-green-50">
+    <h2 class="text-xl font-semibold text-green-700">顧客登録</h2>
+    <p class="text-sm text-gray-600">新規顧客を追加</p>
+  </a>
+
+  <a href="{{ url_for('contract_new') }}" class="block bg-white p-6 rounded shadow hover:bg-green-50">
+    <h2 class="text-xl font-semibold text-green-700">契約登録</h2>
+    <p class="text-sm text-gray-600">契約情報の登録</p>
+  </a>
+
+  <a href="{{ url_for('contacts') }}" class="block bg-white p-6 rounded shadow hover:bg-green-50">
+    <h2 class="text-xl font-semibold text-green-700">コンタクト履歴</h2>
+    <p class="text-sm text-gray-600">やり取り履歴の確認・追加</p>
+  </a>
+
+  <a href="{{ url_for('invoices') }}" class="block bg-white p-6 rounded shadow hover:bg-green-50">
+    <h2 class="text-xl font-semibold text-green-700">請求管理</h2>
+    <p class="text-sm text-gray-600">請求情報の管理</p>
+  </a>
+
+  <a href="{{ url_for('sales') }}" class="block bg-white p-6 rounded shadow hover:bg-green-50">
+    <h2 class="text-xl font-semibold text-green-700">売上管理</h2>
+    <p class="text-sm text-gray-600">売上データの表示・検索</p>
+  </a>
+</div>
+
+{% endblock %}

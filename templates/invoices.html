@@ -1,0 +1,40 @@
+
+
+{% extends 'base.html' %}
+{% block title %}請求管理 - Pathpix CRM{% endblock %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">請求管理</h2>
+
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white border border-gray-300 text-sm">
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="border px-4 py-2">請求ID</th>
+        <th class="border px-4 py-2">顧客名</th>
+        <th class="border px-4 py-2">契約名</th>
+        <th class="border px-4 py-2">請求日</th>
+        <th class="border px-4 py-2">請求金額</th>
+        <th class="border px-4 py-2">支払期日</th>
+        <th class="border px-4 py-2">ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for invoice in invoices %}
+      <tr class="hover:bg-gray-50">
+        <td class="border px-4 py-2 text-center">{{ invoice.id }}</td>
+        <td class="border px-4 py-2">{{ invoice.customer_name }}</td>
+        <td class="border px-4 py-2">{{ invoice.contract_name }}</td>
+        <td class="border px-4 py-2">{{ invoice.invoice_date }}</td>
+        <td class="border px-4 py-2 text-right">¥{{ "{:,}".format(invoice.amount) }}</td>
+        <td class="border px-4 py-2">{{ invoice.due_date }}</td>
+        <td class="border px-4 py-2 text-center">{{ invoice.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7" class="text-center text-gray-500 py-4">請求データがありません。</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
